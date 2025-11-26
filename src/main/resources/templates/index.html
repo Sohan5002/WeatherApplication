@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>⛅ WeatherApplication ⛅</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/weather.css">
+</head>
+
+<body class="app-bg">
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow p-4 text-center">
+
+                <h2 class="mb-3">🌤 Weather Application</h2>
+
+                <form th:action="@{/weather}" method="get">
+                    <input type="text" name="city" class="form-control mb-3" placeholder="Enter city name" required>
+                    <button class="btn btn-primary btn-block">Search</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/weather.js"></script>
+</body>
+</html>

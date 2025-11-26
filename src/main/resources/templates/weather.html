@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>⛅ Weather Result</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Weather Icons -->
+ <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">-->
+
+    <link th:href="@{/css/weather.css}" href="/css/weather.css" rel="stylesheet">
+</head>
+<!--
+<body th:style="|background-image: url('@{/images/image.png}'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;|">
+-->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+
+            <div class="card shadow p-4 text-center">
+
+                <!-- City -->
+                <h1 class="mb-1">
+                    <span th:text="${weather.name}">City</span>,
+                    <small class="text-muted" th:text="${weather.sys.country}">Country</small>
+                </h1>
+
+
+                <div class="weather-meta">
+
+                    <div>
+                        <div class="description" th:text="${weather.weather[0].description}">clear sky</div>
+                        <div class="h4 font-weight-bold">
+                            <span th:text="${weather.main.temp}">20</span>°C
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Details -->
+                <div class="info-row">
+                    <img src="https://img.icons8.com/fluency/48/000000/humidity.png" class="info-icon">
+                    <span class="info-label">Humidity:</span>
+                    <span th:text="${weather.main.humidity}">50</span>%
+                </div>
+
+                <div class="info-row">
+                    <img src="https://img.icons8.com/fluency/48/000000/wind.png" class="info-icon">
+                    <span class="info-label">Wind:</span>
+                    <span th:text="${weather.wind.speed}">3.5</span> m/s
+                </div>
+
+                <a th:href="@{/'/'}" class="btn btn-secondary btn-block mt-4">Back</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

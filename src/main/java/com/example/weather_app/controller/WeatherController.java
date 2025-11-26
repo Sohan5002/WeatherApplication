@@ -18,10 +18,9 @@ public class WeatherController {
 
     @GetMapping("/")
     public String getIndex() {
-        return "index";   // loads index.html
+        return "index";
     }
 
-    // ✔ FIXED — JS URL must match controller
     @GetMapping("/api/weather")
     public ResponseEntity<?> getWeatherJson(@RequestParam("city") String city) {
 
@@ -35,8 +34,12 @@ public class WeatherController {
                     restTemplate.getForObject(url, WeatherResponse.class);
 
             if (weatherResponse == null) {
+
                 return ResponseEntity.status(404).body(Map.of("error", "City not found"));
             }
+
+
+
 
             Map<String, Object> result = Map.of(
                     "name", weatherResponse.getName(),

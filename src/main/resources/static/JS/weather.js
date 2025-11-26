@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Reliable mapping from weather.main -> openweathermap icon code
     const MAIN_TO_OWM = {
         Clear: '01d',
         Clouds: '03d',
@@ -22,14 +21,17 @@ document.addEventListener("DOMContentLoaded", () => {
         if (MAIN_TO_OWM[main]) {
             return `https://openweathermap.org/img/wn/${MAIN_TO_OWM[main]}@2x.png`;
         }
-        // fallback to the API-sent icon code (if any) or a default
+
+
+
+
+
+
         if (apiIconFallback) {
             return `https://openweathermap.org/img/wn/${apiIconFallback}@2x.png`;
         }
         return 'https://openweathermap.org/img/wn/01d@2x.png'; // default sunny
     }
-
-    // --- For server-rendered weather.html: replace main icon with mapped icon ---
     const weatherRoot = document.getElementById('weatherRoot');
     if (weatherRoot) {
         const main = weatherRoot.getAttribute('data-main');
@@ -41,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- For index page: handle the AJAX search and render a result card with mapped icon ---
+
     const form = document.querySelector("form");
     if (form) {
         const input = document.querySelector("input[name='city']");
@@ -72,7 +74,10 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         }
 
-        // Function to show error messages
+
+
+
+
         function displayError(message) {
             resultContainer.innerHTML = `
                 <div class="alert alert-danger">
@@ -92,13 +97,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Handle form submit
         form.addEventListener("submit", async (event) => {
-            event.preventDefault(); // Prevent page reload
+            event.preventDefault();
             const city = input.value.trim();
 
             if (!city) {
                 displayError("Please enter a city name.");
                 return;
             }
+
+
+
 
             showLoading();
 
